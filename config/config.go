@@ -35,13 +35,22 @@ type Database struct {
 }
 
 type Jwt struct {
-	Secret string `mapstructure:"secret" json:"secret" yaml:"secret"`
-	JwtTtl int64  `mapstructure:"jwt_ttl" json:"jwt_ttl" yaml:"jwt_ttl"` // token 有效期（秒）
+	Secret                  string `mapstructure:"secret" json:"secret" yaml:"secret"`
+	JwtTtl                  int64  `mapstructure:"jwt_ttl" json:"jwt_ttl" yaml:"jwt_ttl"`                                                          // token 有效期（秒）
+	JwtBlacklistGracePeriod int64  `mapstructure:"jwt_blacklist_grace_period" json:"jwt_blacklist_grace_period" yaml:"jwt_blacklist_grace_period"` // 黑名单宽限时间（秒）
+}
+
+type Redis struct {
+	Host     string `mapstructure:"host" json:"host" yaml:"host"`
+	Port     string `mapstructure:"port" json:"port" yaml:"port"`
+	DB       int    `mapstructure:"db" json:"db" yaml:"db"`
+	Password string `mapstructure:"password" json:"password" yaml:"password"`
 }
 
 type Configuration struct {
-	App APP      `mapstructure:"app" json:"app" yaml:"app"`
-	Log Log      `mapstructure:"log" json:"log" yaml:"log"`
-	Db  Database `mapstructure:"database" json:"database" yaml:"database"`
-	Jwt Jwt      `mapstructure:"jwt" json:"jwt" yaml:"jwt"`
+	App   APP      `mapstructure:"app" json:"app" yaml:"app"`
+	Log   Log      `mapstructure:"log" json:"log" yaml:"log"`
+	Db    Database `mapstructure:"database" json:"database" yaml:"database"`
+	Jwt   Jwt      `mapstructure:"jwt" json:"jwt" yaml:"jwt"`
+	Redis Redis    `mapstructure:"redis" json:"redis" yaml:"redis"`
 }
