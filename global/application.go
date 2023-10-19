@@ -18,4 +18,5 @@ type Application struct {
 	Redis       *redis.Client
 }
 
+// 全局变量App
 var App = new(Application)

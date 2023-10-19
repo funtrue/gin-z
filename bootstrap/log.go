@@ -1,3 +1,5 @@
+// @Title  日志初始化
+// @Description  日志信息初始化
 package bootstrap
 
 import (
@@ -81,6 +83,10 @@ func getLogWriter() zapcore.WriteSyncer {
 	return zapcore.AddSync(file)
 }
 
+// @title    日志初始化函数
+// @description  日志初始化目录，zap Go日志库
+// @param     输入参数名:NULL              参数类型:NULL
+// @return    返回参数名:zap               参数类型:zap
 func InitializeLog() *zap.Logger {
 	// 创建根目录
 	createRootDir()
