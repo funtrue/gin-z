@@ -1,5 +1,6 @@
 package config
 
+// APP   项目启动配置对象，定义了项目的基础信息
 type APP struct {
 	Env     string `mapstructure:"env" json:"env" yaml:"env"`
 	Port    string `mapstructure:"port" json:"port" yaml:"port"`
@@ -7,6 +8,7 @@ type APP struct {
 	AppUrl  string `mapstructure:"app_url" json:"app_url" yaml:"app_url"`
 }
 
+// Log   日志对象，定义了日志的基础信息
 type Log struct {
 	Level      string `mapstructure:"level" json:"level" yaml:"level"`
 	RootDir    string `mapstructure:"root_dir" json:"root_dir" yaml:"root_dir"`
@@ -19,6 +21,7 @@ type Log struct {
 	Compress   bool   `mapstructure:"compress" json:"compress" yaml:"compress"`
 }
 
+// Database   Database对象，定义了数据库的基础信息
 type Database struct {
 	Driver              string `mapstructure:"driver" json:"driver" yaml:"driver"`
 	Host                string `mapstructure:"host" json:"host" yaml:"host"`
@@ -34,6 +37,7 @@ type Database struct {
 	LogFilename         string `mapstructure:"log_filename" json:"log_filename" yaml:"log_filename"`
 }
 
+// Jwt   Jwt对象，定义了Jwt的基础信息
 type Jwt struct {
 	Secret                  string `mapstructure:"secret" json:"secret" yaml:"secret"`
 	JwtTtl                  int64  `mapstructure:"jwt_ttl" json:"jwt_ttl" yaml:"jwt_ttl"`                                                          // token 有效期（秒）
@@ -41,6 +45,7 @@ type Jwt struct {
 	RefreshGracePeriod      int64  `mapstructure:"refresh_grace_period" json:"refresh_grace_period" yaml:"refresh_grace_period"`                   // token 自动刷新宽限时间（秒）
 }
 
+// Redis   Redis对象，定义了Redis基础信息
 type Redis struct {
 	Host     string `mapstructure:"host" json:"host" yaml:"host"`
 	Port     string `mapstructure:"port" json:"port" yaml:"port"`
@@ -48,6 +53,7 @@ type Redis struct {
 	Password string `mapstructure:"password" json:"password" yaml:"password"`
 }
 
+// Configuration   项目对象，定义了项目的基础信息
 type Configuration struct {
 	App   APP      `mapstructure:"app" json:"app" yaml:"app"`
 	Log   Log      `mapstructure:"log" json:"log" yaml:"log"`

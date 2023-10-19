@@ -9,6 +9,7 @@ import (
 	"gorm.io/gorm"
 )
 
+// Application 全局变量 存放配置文件信息
 type Application struct {
 	ConfigViper *viper.Viper
 	Config      config.Configuration

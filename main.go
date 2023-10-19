@@ -5,8 +5,10 @@ import (
 	"gin-z/global"
 )
 
+// @title         项目入口，一切的开始
+// @description   进行项目所需要配置初始化，并启动服务器
 func main() {
-	// 初始化配置
+	// 初始化全局配置
 	bootstrap.InitializeConfig()
 
 	// 初始化日志
