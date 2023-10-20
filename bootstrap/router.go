@@ -32,7 +32,10 @@ func setupRouter() *gin.Engine {
 	return router
 }
 
-// RunServer 启动服务器
+// @title    项目启动函数
+// @description  进行gin项目启动，并匹配路由
+// @param     输入参数名:NULL              参数类型:NULL
+// @return    返回参数名:client               参数类型:redis
 func RunServer() {
 	r := setupRouter()
 	srv := &http.Server{

@@ -47,6 +47,19 @@ func setLogLevel() {
 	}
 }
 
+// 使用 lumberjack 作为日志写入器
+func getLogWriter() zapcore.WriteSyncer {
+	file := &lumberjack.Logger{
+		Filename:   global.App.Config.Log.RootDir + "/" + global.App.Config.Log.Filename,
+		MaxSize:    global.App.Config.Log.MaxSize,
+		MaxBackups: global.App.Config.Log.MaxBackups,
+		MaxAge:     global.App.Config.Log.MaxAge,
+		Compress:   global.App.Config.Log.Compress,
+	}
+
+	return zapcore.AddSync(file)
+}
+
 // 扩展 Zap
 func getZapCore() zapcore.Core {
 	var encoder zapcore.Encoder
@@ -68,19 +81,6 @@ func getZapCore() zapcore.Core {
 	}
 
 	return zapcore.NewCore(encoder, getLogWriter(), level)
-}
-
-// 使用 lumberjack 作为日志写入器
-func getLogWriter() zapcore.WriteSyncer {
-	file := &lumberjack.Logger{
-		Filename:   global.App.Config.Log.RootDir + "/" + global.App.Config.Log.Filename,
-		MaxSize:    global.App.Config.Log.MaxSize,
-		MaxBackups: global.App.Config.Log.MaxBackups,
-		MaxAge:     global.App.Config.Log.MaxAge,
-		Compress:   global.App.Config.Log.Compress,
-	}
-
-	return zapcore.AddSync(file)
 }
 
 // @title    日志初始化函数

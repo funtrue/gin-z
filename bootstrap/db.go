@@ -37,6 +37,7 @@ func getGormLogWriter() logger.Writer {
 	return log.New(writer, "\r\n", log.LstdFlags)
 }
 
+// 自定义数据库日志输出格式
 func getGormLogger() logger.Interface {
 	var logMode logger.LogLevel
 
@@ -104,6 +105,10 @@ func InitMySqlGorm() *gorm.DB {
 	}
 }
 
+// @title    数据库初始化函数
+// @description  根据全局变量中的数据库类型进行初始化
+// @param     输入参数名:NULL              参数类型:NULL
+// @return    返回参数名:gorm               参数类型:gorm
 func InitializeDB() *gorm.DB {
 	// 根据驱动配置进行初始化
 	switch global.App.Config.Db.Driver {
